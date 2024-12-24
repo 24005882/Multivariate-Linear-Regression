@@ -19,7 +19,17 @@ Predict the CO2 emission of a car where the weight is 2300kg, and the volume is 
 Print the predicted output.
 ## Program:
 ```
-
+import pandas as pd
+from sklearn import linear_model
+df = pd.read_csv("carsemission.csv")
+X = df[['Weight', 'Volume']]
+y = df['CO2']
+regr = linear_model.LinearRegression()
+regr.fit(X, y)
+print('Coefficients:', regr.coef_)
+print('Intercept:',regr.intercept_)
+predictedCO2 = regr.predict([[3300, 1300]])
+print('Predicted CO2 for the corresponding weight and volume',predictedCO2)
 
 
 
@@ -28,9 +38,8 @@ Print the predicted output.
 ```
 ## Output:
 
-### Insert your output
 
-<br>
+
 
 ## Result
 Thus the multivariate linear regression is implemented and predicted the output using python program.
